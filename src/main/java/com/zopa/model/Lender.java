@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Lender {
 
-    private String name;
-    private Double rate;
-    private Integer available;
+    private final String name;
+    private final Double rate;
+    private final Integer offers;
 
-    public Lender(final String name, final Double rate, final Integer available) {
+    public Lender(final String name, final Double rate, final Integer offers) {
         this.name = name;
         this.rate = rate;
-        this.available = available;
+        this.offers = offers;
     }
 
     public String getName() {
@@ -22,8 +22,8 @@ public class Lender {
         return rate;
     }
 
-    public Integer getAvailable() {
-        return available;
+    public Integer getOffers() {
+        return offers;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Lender {
         return "Lender{" +
                 "name='" + name + '\'' +
                 ", rate=" + rate +
-                ", available=" + available +
+                ", offers=" + offers +
                 '}';
     }
 
@@ -46,11 +46,11 @@ public class Lender {
         final Lender lender = (Lender) o;
         return Objects.equals(this.name, lender.name) &&
                 Objects.equals(rate, lender.rate) &&
-                Objects.equals(available, lender.available);
+                Objects.equals(offers, lender.offers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, rate, available);
+        return Objects.hash(name, rate, offers);
     }
 }
