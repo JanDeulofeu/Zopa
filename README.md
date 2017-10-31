@@ -1,6 +1,6 @@
 ## Implementation:
 
-To calculate the Loan repayment is been used the formula: 
+To calculate the Loan repayment the following formula has been used: 
 
  A= P * ( r(1+r)^n / (1+r)^n −1 )
  
@@ -15,9 +15,10 @@ To calculate the Loan repayment is been used the formula:
  To calculate the loan rate:
  
  - The lenders CSV has been filtered to get the lowest rate
- - This interest rate has been decreased by 0.11, having Zopa the best interest rate in front of the Lenders
- - All rate have been rounded to the upper closet value, from 6.79% to 7% 
+ - This interest rate has been decreased by 0.11, giving Zopa the best interest rate in front of the Lenders
+ - All rates have been rounded up to the closest value, from 6.79% to 7.0% 
  - The repayments have been rounded to the closest value with 2 digits
+ 
  
  ## ZOPA CLI Application
  
