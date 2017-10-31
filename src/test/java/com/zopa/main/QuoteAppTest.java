@@ -44,7 +44,7 @@ class QuoteAppTest {
     public void validateThrowsErrorWhenLoanValueNotInRange() {
 
         QuoteApp.main(new String[]{"ghost.csv", "100"});
-        verify(out).println(contains("Error Processing Loan: Amount not valid, values are between [1000] and [15000] with increments od [100]."));
+        verify(out).println(contains("Error Processing Loan: Amount not valid, values should be between [1000] and [15000] with increments of [100]."));
     }
 
     @Test

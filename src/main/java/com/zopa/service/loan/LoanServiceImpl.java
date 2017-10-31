@@ -50,7 +50,7 @@ public class LoanServiceImpl implements LoanService {
 
         if (!validAmount) {
 
-            throw new LendersCriteriaException(String.format("Amount not valid, values are between [%s] and [%s] with increments od [%s].",
+            throw new LendersCriteriaException(String.format("Amount not valid, values should be between [%s] and [%s] with increments of [%s].",
                     LoanValueValidator.MIN_LOAN_VALUE,
                     LoanValueValidator.MAX_LOAN_VALUE,
                     LoanValueValidator.DELTA_LOAN_VALUE));
