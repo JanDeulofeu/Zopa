@@ -1,4 +1,4 @@
-##Implementation:
+## Implementation:
 
 To calculate the Loan repayment is been used the formula: 
 
