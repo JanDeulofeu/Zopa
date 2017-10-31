@@ -12,23 +12,26 @@ public class QuoteApp {
 
         if (isValidInput(args)) {
 
-            final Loan loanCalculation = loanCalculator.calculate(args[0], Integer.valueOf(args[1]));
+            try {
+                final Loan loanCalculation = loanCalculator.calculate(args[0], Integer.valueOf(args[1]));
 
-            System.out.println("Requested amount: £" + loanCalculation.getAmount());
-            System.out.println("Rate: " + loanCalculation.getRate() + "%");
-            System.out.println("Monthly repayment:  £" + loanCalculation.getRepayment());
-            System.out.println("Total repayment:  £" + loanCalculation.getTotalRepayment());
-
+                System.out.println("Requested amount: £" + loanCalculation.getAmount());
+                System.out.println("Rate: " + loanCalculation.getRate() + "%");
+                System.out.println("Monthly repayment:  £" + loanCalculation.getRepayment());
+                System.out.println("Total repayment:  £" + loanCalculation.getTotalRepayment());
+            } catch (final RuntimeException e) {
+                System.out.println("Error Processing Loan: " + e.getMessage());
+            }
         }
     }
 
 
     private static boolean isValidInput(final String[] args) {
 
-        if (args[0] == null || args[0] == "") {
+        if (args[0] == null || "".equals(args[0])) {
             System.out.println("Error: Field CSV file is empty.");
             return false;
-        } else if (args[1] == null || args[1] == "") {
+        } else if (args[1] == null || "".equals(args[1])) {
             System.out.println("Error: Loan value is empty.");
             return false;
         }

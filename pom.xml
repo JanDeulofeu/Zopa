@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zupa</groupId>
-    <artifactId>Zupa</artifactId>
+    <groupId>com.zopa</groupId>
+    <artifactId>Zopa</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -63,7 +63,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
