@@ -10,5 +10,4 @@ public class LenderBuilder {
 
         return new Lender(input[0], Double.valueOf(input[1]) * PERCENTAGE, Integer.valueOf(input[2]));
     }
-
 }
