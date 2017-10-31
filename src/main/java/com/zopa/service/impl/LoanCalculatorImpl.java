@@ -46,6 +46,7 @@ public class LoanCalculatorImpl implements LoanCalculator {
         }
     }
 
+
     private void validateAmount(final Integer amount) {
         final boolean validAmount = LoanValueValidator.validateLoanValue(amount);
 
@@ -54,12 +55,11 @@ public class LoanCalculatorImpl implements LoanCalculator {
         }
     }
 
+
     private File readFileFromResources(final String file) throws URISyntaxException {
 
         final URI uri = new URI(getClass().getClassLoader().getResource(file).toString());
 
         return new File(uri);
     }
-
-
 }

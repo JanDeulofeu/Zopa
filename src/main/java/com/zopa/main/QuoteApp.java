@@ -19,6 +19,7 @@ public class QuoteApp {
                 System.out.println("Rate: " + loanCalculation.getRate() + "%");
                 System.out.println("Monthly repayment:  £" + loanCalculation.getRepayment());
                 System.out.println("Total repayment:  £" + loanCalculation.getTotalRepayment());
+
             } catch (final RuntimeException e) {
                 System.out.println("Error Processing Loan: " + e.getMessage());
             }
