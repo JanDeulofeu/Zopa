@@ -102,7 +102,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <!--mvn package-->
+            <!-- Application generation-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>appassembler-maven-plugin</artifactId>
