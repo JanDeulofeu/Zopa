@@ -11,7 +11,6 @@ import com.zopa.service.LoanCalculator;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
@@ -28,7 +27,7 @@ public class LoanCalculatorImpl implements LoanCalculator {
 
         validateAmount(amount);
 
-        try (final Stream<String> lines = Files.lines(readFileFromResources(lendersFile).toPath()).skip(SKIP_HEADERS)) {
+        try (final Stream<String> lines = Files.lines(new File(lendersFile).toPath()).skip(SKIP_HEADERS)) {
 
             final Lender lender = lines.map(line -> line.split(SEPARATOR))
                     .map(LenderBuilder::build)
@@ -40,24 +39,22 @@ public class LoanCalculatorImpl implements LoanCalculator {
 
         } catch (final NoSuchElementException e) {
             throw new LendersCriteriaException("Not Lender found.");
-        } catch (final IOException | NullPointerException | URISyntaxException e) {
+        } catch (final IOException | NullPointerException e) {
             throw new LendersFileProcessException(String.format("Error Processing File [%s]", lendersFile), e);
         }
     }
 
 
     private void validateAmount(final Integer amount) {
+
         final boolean validAmount = LoanValueValidator.validateLoanValue(amount);
 
         if (!validAmount) {
-            throw new LendersCriteriaException(String.format("Amount not valid, values are between [%s] and [%s] with increments od [%s].", LoanValueValidator.MIN_LOAN_VALUE, LoanValueValidator.MAX_LOAN_VALUE, LoanValueValidator.DELTA_LOAN_VALUE));
+
+            throw new LendersCriteriaException(String.format("Amount not valid, values are between [%s] and [%s] with increments od [%s].",
+                    LoanValueValidator.MIN_LOAN_VALUE,
+                    LoanValueValidator.MAX_LOAN_VALUE,
+                    LoanValueValidator.DELTA_LOAN_VALUE));
         }
     }
-
-    private File readFileFromResources(final String file) throws URISyntaxException {
-
-        return new File(file);
-    }
-
-
 }

@@ -37,7 +37,6 @@ public class LoanCalculatorTest {
                 .hasMessage("Not Lender found.");
     }
 
-
     @Test
     public void validateLoanCalculatorThrowsExceptionIfFileNotFound() throws URISyntaxException {
 
@@ -47,7 +46,6 @@ public class LoanCalculatorTest {
                 .isInstanceOf(LendersFileProcessException.class)
                 .hasMessage(String.format("Error Processing File [%s]", file));
     }
-
 
     private String getFileResource(final String fileName) {
         return Thread.currentThread().getContextClassLoader().getResource(fileName).getFile();

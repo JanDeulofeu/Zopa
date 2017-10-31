@@ -23,7 +23,7 @@ public class RepaymentCalculator {
 
 
     /**
-     * A=P*( r(1+r)^n / (1+r)^n −1 )
+     * A=P*(r(1+r)^n / (1+r)^n −1)
      */
     private static Double calculateAmortization(final Integer amount, final Double interest) {
 
