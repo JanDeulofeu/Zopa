@@ -1,6 +1,7 @@
 package com.zopa.service.impl;
 
 import com.zopa.builder.LenderBuilder;
+import com.zopa.calculator.LoanValueValidator;
 import com.zopa.calculator.RepaymentCalculator;
 import com.zopa.exceptions.LendersCriteriaException;
 import com.zopa.exceptions.LendersFileProcessException;
@@ -19,13 +20,14 @@ import java.util.stream.Stream;
 
 public class LoanCalculatorImpl implements LoanCalculator {
 
+    private static final int SKIP_HEADERS = 1;
     public static final String SEPARATOR = ",";
-    public static final int SKIP_HEADERS = 1;
 
 
     @Override
     public Loan calculate(final String lendersFile, final Integer amount) {
 
+        validateAmount(amount);
 
         try (final Stream<String> lines = Files.lines(readFileFromResources(lendersFile).toPath()).skip(SKIP_HEADERS)) {
 
@@ -44,10 +46,20 @@ public class LoanCalculatorImpl implements LoanCalculator {
         }
     }
 
+    private void validateAmount(final Integer amount) {
+        final boolean validAmount = LoanValueValidator.validateLoanValue(amount);
+
+        if (!validAmount) {
+            throw new LendersCriteriaException(String.format("Amount not valid, values are between [%s] and [%s] with increments od [%s].", LoanValueValidator.MIN_LOAN_VALUE, LoanValueValidator.MAX_LOAN_VALUE, LoanValueValidator.DELTA_LOAN_VALUE));
+        }
+    }
+
     private File readFileFromResources(final String file) throws URISyntaxException {
 
         final URI uri = new URI(getClass().getClassLoader().getResource(file).toString());
 
         return new File(uri);
     }
+
+
 }

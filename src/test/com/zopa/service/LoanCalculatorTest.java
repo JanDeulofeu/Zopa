@@ -47,6 +47,4 @@ public class LoanCalculatorTest {
                 .isInstanceOf(LendersFileProcessException.class)
                 .hasMessage(String.format("Error Processing File [%s]", file));
     }
-
-
 }
