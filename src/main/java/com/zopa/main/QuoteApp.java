@@ -1,12 +1,12 @@
 package com.zopa.main;
 
 import com.zopa.model.Loan;
-import com.zopa.service.LoanCalculator;
-import com.zopa.service.impl.LoanCalculatorImpl;
+import com.zopa.service.loan.LoanService;
+import com.zopa.service.loan.LoanServiceImpl;
 
 public class QuoteApp {
 
-    private static final LoanCalculator loanCalculator = new LoanCalculatorImpl();
+    private static final LoanService loanCalculator = new LoanServiceImpl();
 
     public static void main(final String[] args) {
 

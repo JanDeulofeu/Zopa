@@ -19,7 +19,15 @@ To calculate the Loan repayment the following formula has been used:
  - All rates have been rounded up to the closest value, from 6.79% to 7.0% 
  - The repayments have been rounded to the closest value with 2 digits
  
+
+ ## Loan Service interface
  
+ The interface LoanService, defines the entry point to calculate the rates given a CSV Lenders file and a Loan amount.
+ 
+     Loan calculate(String lendersFile, Integer amount)
+
+ 
+  
  ## ZOPA CLI Application
  
  To build the application:

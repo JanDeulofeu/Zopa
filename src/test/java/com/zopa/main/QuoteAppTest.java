@@ -25,6 +25,7 @@ class QuoteAppTest {
 
 
         QuoteApp.main(new String[]{Thread.currentThread().getContextClassLoader().getResource("market.csv").getFile(), "1000"});
+
         verify(out).println(contains("Requested amount: £1000"));
         verify(out).println(contains("Rate: 7.0%"));
         verify(out).println(contains("Monthly repayment:  £30.78"));

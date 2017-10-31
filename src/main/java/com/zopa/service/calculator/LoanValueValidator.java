@@ -1,4 +1,4 @@
-package com.zopa.calculator;
+package com.zopa.service.calculator;
 
 public class LoanValueValidator {
 

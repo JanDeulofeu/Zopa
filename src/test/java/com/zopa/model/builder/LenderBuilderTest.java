@@ -1,7 +1,7 @@
-package com.zopa.builder;
+package com.zopa.model.builder;
 
 import com.zopa.model.Lender;
-import com.zopa.service.impl.LoanCalculatorImpl;
+import com.zopa.service.loan.LoanServiceImpl;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,7 +16,7 @@ public class LenderBuilderTest {
     @MethodSource("generateTestValues")
     public void validateChangeUsingOptimalChangeForService(final String chain, final Lender expected) {
 
-        assertThat(LenderBuilder.build(chain.split(LoanCalculatorImpl.SEPARATOR))).isEqualTo(expected);
+        assertThat(LenderBuilder.build(chain.split(LoanServiceImpl.SEPARATOR))).isEqualTo(expected);
     }
 
     private static Stream<Arguments> generateTestValues() {

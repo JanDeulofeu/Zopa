@@ -1,4 +1,4 @@
-package com.zopa.calculator;
+package com.zopa.service.calculator;
 
 import com.zopa.model.Loan;
 

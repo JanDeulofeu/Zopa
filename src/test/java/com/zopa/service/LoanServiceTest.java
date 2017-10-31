@@ -4,7 +4,8 @@ package com.zopa.service;
 import com.zopa.exceptions.LendersCriteriaException;
 import com.zopa.exceptions.LendersFileProcessException;
 import com.zopa.model.Loan;
-import com.zopa.service.impl.LoanCalculatorImpl;
+import com.zopa.service.loan.LoanService;
+import com.zopa.service.loan.LoanServiceImpl;
 import org.junit.jupiter.api.Test;
 
 import java.net.URISyntaxException;
@@ -12,15 +13,15 @@ import java.net.URISyntaxException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class LoanCalculatorTest {
+public class LoanServiceTest {
 
-    private final LoanCalculator loanCalculator = new LoanCalculatorImpl();
+    private final LoanService serviceCalculator = new LoanServiceImpl();
 
 
     @Test
-    public void validateLoanCalculatorGetsTheBestLoanFromCSVFile() throws URISyntaxException {
+    public void validateServiceCalculatorGetsTheBestLoanFromCSVFile() throws URISyntaxException {
 
-        final Loan result = loanCalculator.calculate(getFileResource("market.csv"), 1000);
+        final Loan result = serviceCalculator.calculate(getFileResource("market.csv"), 1000);
 
         assertThat(result.getAmount()).isEqualTo(1000);
         assertThat(result.getRate()).isEqualTo(7.0);
@@ -30,19 +31,19 @@ public class LoanCalculatorTest {
 
 
     @Test
-    public void validateLoanCalculatorThrowsExceptionIfLenderNotFound() throws URISyntaxException {
+    public void validateServiceCalculatorThrowsExceptionIfLenderNotFound() throws URISyntaxException {
 
-        assertThatThrownBy(() -> loanCalculator.calculate(getFileResource("emptymarket.csv"), 1000))
+        assertThatThrownBy(() -> serviceCalculator.calculate(getFileResource("emptymarket.csv"), 1000))
                 .isInstanceOf(LendersCriteriaException.class)
                 .hasMessage("Not Lender found.");
     }
 
     @Test
-    public void validateLoanCalculatorThrowsExceptionIfFileNotFound() throws URISyntaxException {
+    public void validateServiceCalculatorThrowsExceptionIfFileNotFound() throws URISyntaxException {
 
         final String file = "ghost.csv";
 
-        assertThatThrownBy(() -> loanCalculator.calculate(file, 1000))
+        assertThatThrownBy(() -> serviceCalculator.calculate(file, 1000))
                 .isInstanceOf(LendersFileProcessException.class)
                 .hasMessage(String.format("Error Processing File [%s]", file));
     }

@@ -1,4 +1,4 @@
-package com.zopa.builder;
+package com.zopa.model.builder;
 
 import com.zopa.model.Lender;
 

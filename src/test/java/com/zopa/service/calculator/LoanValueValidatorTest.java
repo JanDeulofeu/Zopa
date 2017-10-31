@@ -1,4 +1,4 @@
-package com.zopa.calculator;
+package com.zopa.service.calculator;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -33,7 +33,8 @@ public class LoanValueValidatorTest {
             "15000, true",
             "15001, false",
             "15001, false",
-            "15100, false"
+            "15100, false",
+            "150000, false"
     })
     public void validateLoanValueIsInRangeAndHavingIncrementsOf100(final Double loan, final Boolean valid) {
         assertThat(LoanValueValidator.validateLoanValue(loan.intValue())).isEqualTo(valid);

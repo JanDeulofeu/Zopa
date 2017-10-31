@@ -1,13 +1,12 @@
-package com.zopa.service.impl;
+package com.zopa.service.loan;
 
-import com.zopa.builder.LenderBuilder;
-import com.zopa.calculator.LoanValueValidator;
-import com.zopa.calculator.RepaymentCalculator;
 import com.zopa.exceptions.LendersCriteriaException;
 import com.zopa.exceptions.LendersFileProcessException;
 import com.zopa.model.Lender;
 import com.zopa.model.Loan;
-import com.zopa.service.LoanCalculator;
+import com.zopa.model.builder.LenderBuilder;
+import com.zopa.service.calculator.LoanValueValidator;
+import com.zopa.service.calculator.RepaymentCalculator;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +15,7 @@ import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 
-public class LoanCalculatorImpl implements LoanCalculator {
+public class LoanServiceImpl implements LoanService {
 
     private static final int SKIP_HEADERS = 1;
     public static final String SEPARATOR = ",";
