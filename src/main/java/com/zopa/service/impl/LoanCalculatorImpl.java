@@ -11,7 +11,6 @@ import com.zopa.service.LoanCalculator;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.util.Comparator;
@@ -55,11 +54,10 @@ public class LoanCalculatorImpl implements LoanCalculator {
         }
     }
 
-
     private File readFileFromResources(final String file) throws URISyntaxException {
 
-        final URI uri = new URI(getClass().getClassLoader().getResource(file).toString());
-
-        return new File(uri);
+        return new File(file);
     }
+
+
 }

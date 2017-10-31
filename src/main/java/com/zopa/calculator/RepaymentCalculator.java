@@ -11,6 +11,7 @@ public class RepaymentCalculator {
     public static final int MONTHS_LOAN = 36;
     public static final int NUMBER_DECIMALS = 2;
 
+
     public static Loan calculateRepayment(final Integer amount, final Double rate) {
 
         final Double repayment = calculateAmortization(amount, rate - ZOPA_DISCOUNT);

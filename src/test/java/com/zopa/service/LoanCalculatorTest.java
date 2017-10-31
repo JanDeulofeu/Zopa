@@ -20,7 +20,7 @@ public class LoanCalculatorTest {
     @Test
     public void validateLoanCalculatorGetsTheBestLoanFromCSVFile() throws URISyntaxException {
 
-        final Loan result = loanCalculator.calculate("market.csv", 1000);
+        final Loan result = loanCalculator.calculate(getFileResource("market.csv"), 1000);
 
         assertThat(result.getAmount()).isEqualTo(1000);
         assertThat(result.getRate()).isEqualTo(7.0);
@@ -32,7 +32,7 @@ public class LoanCalculatorTest {
     @Test
     public void validateLoanCalculatorThrowsExceptionIfLenderNotFound() throws URISyntaxException {
 
-        assertThatThrownBy(() -> loanCalculator.calculate("emptymarket.csv", 1000))
+        assertThatThrownBy(() -> loanCalculator.calculate(getFileResource("emptymarket.csv"), 1000))
                 .isInstanceOf(LendersCriteriaException.class)
                 .hasMessage("Not Lender found.");
     }
@@ -46,5 +46,10 @@ public class LoanCalculatorTest {
         assertThatThrownBy(() -> loanCalculator.calculate(file, 1000))
                 .isInstanceOf(LendersFileProcessException.class)
                 .hasMessage(String.format("Error Processing File [%s]", file));
+    }
+
+
+    private String getFileResource(final String fileName) {
+        return Thread.currentThread().getContextClassLoader().getResource(fileName).getFile();
     }
 }
